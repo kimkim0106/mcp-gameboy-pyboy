@@ -6,6 +6,8 @@ build-backend = "hatchling.build"
 name = "mcp-gameboy-pyboy"
 version = "0.1.0"
 description = "MCP server for Game Boy emulation using PyBoy"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.10"
 dependencies = [
     "mcp>=1.1.0",
