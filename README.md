@@ -16,13 +16,16 @@ uv sync
 
 ## Use
 
-Point your MCP client at the venv's entry-point script:
+Point your MCP client at `uv run` so dependencies stay in sync automatically:
 
 ```json
 {
   "mcpServers": {
     "gameboy-pyboy": {
-      "command": "/path/to/mcp-gameboy-pyboy/.venv/bin/mcp-gameboy-pyboy"
+      "type": "stdio",
+      "command": "uv",
+      "args": ["--directory", "/path/to/mcp-gameboy-pyboy", "run", "mcp-gameboy-pyboy"],
+      "cwd": "/path/to/mcp-gameboy-pyboy"
     }
   }
 }
@@ -31,7 +34,7 @@ Point your MCP client at the venv's entry-point script:
 Or with Claude Code:
 
 ```bash
-claude mcp add gameboy-pyboy ./.venv/bin/mcp-gameboy-pyboy
+claude mcp add gameboy-pyboy -- uv --directory /path/to/mcp-gameboy-pyboy run mcp-gameboy-pyboy
 ```
 
 Tool schemas are published over MCP — no manual tool reference needed here.
