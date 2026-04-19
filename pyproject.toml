@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-gameboy-pyboy"
+version = "0.1.0"
+description = "MCP server for Game Boy emulation using PyBoy"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.1.0",
+    "pyboy>=2.6.0",
+    "pillow>=11.0.0"
+]
+
+[project.scripts]
+mcp-gameboy-pyboy = "mcp_gameboy.server:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["mcp_gameboy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::UserWarning:pyboy",
+]
